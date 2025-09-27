@@ -1,0 +1,23 @@
+name: android-ci
+on:
+  push:
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - uses: actions/setup-java@v4
+      with:
+        distribution: temurin
+        java-version: "17"
+    - name: Gradle cache
+      uses: gradle/actions/setup-gradle@v3
+    - name: Assemble AshHub
+      run: ./gradlew :ashhub:assembleDebug
+    - name: Upload AshHub APK
+      uses: actions/upload-artifact@v4
+      with:
+        name: ashhub-debug
+        path: ashhub/build/outputs/apk/debug/*.apk
+        if-no-files-found: error
