@@ -14,3 +14,4 @@ This bundle adds a minimal Android app module `ashhub/` and a CI workflow that b
 - If your project already uses Kotlin DSL (`settings.gradle.kts`), no other changes needed.
 - If you have a multi-module layout, just ensure `ashhub` is included and Gradle syncs.
 - The workflow provided only builds `ashhub`. You can add other modules later.
+
